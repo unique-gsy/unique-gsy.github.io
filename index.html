@@ -98,7 +98,7 @@
         <h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><p>树的一些特殊结构可以保证大部分操作在O（logN）完成，保证了最坏情况的时间界</p>
 <hr>
 <ul>
-<li><h2 id="树的遍历（以二叉树为样例）"><a href="#树的遍历（以二叉树为样例）" class="headerlink" title="树的遍历（以二叉树为样例）"></a>树的遍历（以二叉树为样例）</h2></li>
+<li><h2 id="树的遍历（以二叉树为样例）"><a href="#树的遍历（以二叉树为样例）" class="headerlink" title="树的遍历（以二叉树为样例）"></a><strong>树的遍历（以二叉树为样例）</strong></h2></li>
 </ul>
 <table>
 <thead>
@@ -120,13 +120,10 @@
 <td>左节点——&gt;右节点——&gt;根节点（左、右、中）</td>
 </tr>
 </tbody></table>
-<h3 id="1、后缀表达式转化为表达式树"><a href="#1、后缀表达式转化为表达式树" class="headerlink" title="1、后缀表达式转化为表达式树"></a>1、后缀表达式转化为表达式树</h3><p>通过入栈出栈生成表达式树。  </p>
-<blockquote>
-<p>具体步骤是：<br>1、如果该元素是数字，压入栈<br>2、如果该元素是运算符，弹出两个元素，第一个为右子树，第二个为左子树，生成新树压入栈<br>3、如果栈中只剩一个元素时，即为表达树  </p>
-</blockquote>
+<h3 id="1、后缀表达式转化为表达式树"><a href="#1、后缀表达式转化为表达式树" class="headerlink" title="1、后缀表达式转化为表达式树"></a>1、后缀表达式转化为表达式树</h3><p>通过入栈出栈生成表达式树。<br> 具体步骤是：<br> 1、如果该元素是数字，压入栈<br> 2、如果该元素是运算符，弹出两个元素，第一个为右子树，第二个为左子树，生成新树压入栈<br> 3、如果栈中只剩一个元素时，即为表达树  </p>
 <p>例如：后缀表达式为1 2 3 + 4 * + 5 -<br>扫描123<br><img src="./tree/1.png" width="50%" height="50%"><br>扫描+<br><img src="./tree/2.png" width="50%" height="50%"><br>扫描4和*<br><img src="./tree/3.png" width="50%" height="50%"><br>扫描+和5<br><img src="./tree/4.png" width="50%" height="50%"><br>扫描-<br><img src="./tree/5.png" width="50%" height="50%">       </p>
 <ul>
-<li><h2 id="二叉查找树（BST）"><a href="#二叉查找树（BST）" class="headerlink" title="二叉查找树（BST）"></a>二叉查找树（BST）</h2></li>
+<li><h2 id="二叉查找树（BST）"><a href="#二叉查找树（BST）" class="headerlink" title="二叉查找树（BST）"></a><strong>二叉查找树（BST）</strong></h2></li>
 </ul>
 <p>一种特殊排序树，要求左节点小于根节点，右节点大于根节点。</p>
 <p>理想二叉查找树的插入、删除、查找的时间复杂度都是O(logN)。</p>
@@ -134,30 +131,25 @@
 <p>但是可能出现极端情况，导致时间复杂度变成(N)。</p>
 <img src="./tree/6.png" width="30%" height="20%">      
 
-<h3 id="1、insert"><a href="#1、insert" class="headerlink" title="1、insert"></a>1、insert</h3><blockquote>
-<p>第一种情况，插入新节点，找到正确位置，malloc空间即可。<br>第二种情况，插入重复节点，最好是在节点记录中增加信息域表示重复次数。（避免程序开销）</p>
-</blockquote>
-<h3 id="2、delete"><a href="#2、delete" class="headerlink" title="2、delete"></a>2、delete</h3><p>删除节点有三种情况：  </p>
-<blockquote>
-<p>1、如果节点是树叶，直接删除即可，调整父节点指针指向NULL<br>2、如果是有一个子叶的节点，那么将父节点的指针绕过本节点指向子节点，然后free节点空间<br>3、如果有两个子叶的节点，一般的策略是将右节点的最小数据节点代替要删除节点<br>（因为最小数据节点不会有左节点，第二次删除会简单一些）<br>   然后free两个节点空间   </p>
-</blockquote>
+<h3 id="1、insert"><a href="#1、insert" class="headerlink" title="1、insert"></a>1、insert</h3><p>第一种情况，插入新节点，找到正确位置，malloc空间即可。<br>第二种情况，插入重复节点，最好是在节点记录中增加信息域表示重复次数。（避免程序开销）</p>
+<h3 id="2、delete"><a href="#2、delete" class="headerlink" title="2、delete"></a>2、delete</h3><p>删除节点有三种情况：<br>1、如果节点是树叶，直接删除即可，调整父节点指针指向NULL<br>2、如果是有一个子叶的节点，那么将父节点的指针绕过本节点指向子节点，然后free节点空间<br>3、如果有两个子叶的节点，一般的策略是将右节点的最小数据节点代替要删除节点<br>（因为最小数据节点不会有左节点，第二次删除会简单一些）<br>    然后free两个节点空间   </p>
 <p>如果删除次数不太多，可以选择“懒惰删除”，在节点处作标记即可（避免程序开销）</p>
 <h3 id="3、多次填删后的平衡分析"><a href="#3、多次填删后的平衡分析" class="headerlink" title="3、多次填删后的平衡分析"></a>3、多次填删后的平衡分析</h3><p>二叉树会很不平衡（补图）</p>
 <ul>
-<li><h2 id="平衡二叉树（AVL）"><a href="#平衡二叉树（AVL）" class="headerlink" title="平衡二叉树（AVL）"></a>平衡二叉树（AVL）</h2></li>
+<li><h2 id="平衡二叉树（AVL）"><a href="#平衡二叉树（AVL）" class="headerlink" title="平衡二叉树（AVL）"></a><strong>平衡二叉树（AVL）</strong></h2></li>
 </ul>
-<p>要求二叉树有序（左节点小于根节点小于右节点），且有平衡条件，即左右子树的深度差不大于1，<br>但是多次进行填删后会破坏平衡条件，需要进行旋转，调节平衡状态    </p>
-<blockquote>
-<p>当外侧深度大时，需要进行单旋转  (补代码)<br>当内测深度大时，需要进行双旋转  </p>
-</blockquote>
+<p>要求二叉树有序（左节点小于根节点小于右节点），且有平衡条件，即左右子树的深度差不大于1，<br>但是多次进行填删后会破坏平衡条件，需要进行旋转，调节平衡状态<br>1、当外侧深度大时，需要进行单旋转<br>2、当内测深度大时，需要进行双旋转  </p>
+<img src="./tree/AVL旋转树.jpg" width="70%" height="50%">    
+
+<p>（补代码）</p>
 <ul>
-<li><h2 id="伸展树"><a href="#伸展树" class="headerlink" title="伸展树"></a>伸展树</h2></li>
+<li><h2 id="伸展树"><a href="#伸展树" class="headerlink" title="伸展树"></a><strong>伸展树</strong></h2></li>
 </ul>
 <p>保证每次对树的操作最多进行O(MlogN)，但不保证是平衡树。  </p>
 <ul>
-<li><h2 id="B-树"><a href="#B-树" class="headerlink" title="B-树"></a>B-树</h2></li>
-<li><h2 id="B-树-1"><a href="#B-树-1" class="headerlink" title="B+树"></a>B+树</h2></li>
-<li><h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a>红黑树</h2></li>
+<li><h2 id="B-树"><a href="#B-树" class="headerlink" title="B-树"></a><strong>B-树</strong></h2></li>
+<li><h2 id="B-树-1"><a href="#B-树-1" class="headerlink" title="B+树"></a><strong>B+树</strong></h2></li>
+<li><h2 id="红黑树"><a href="#红黑树" class="headerlink" title="红黑树"></a><strong>红黑树</strong></h2></li>
 </ul>
 
       
