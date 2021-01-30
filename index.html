@@ -59,12 +59,12 @@
       </nav>
       <nav id="sub-nav">
         
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="Flux RSS"></a>
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
         
-        <a id="nav-search-btn" class="nav-icon" title="Rechercher"></a>
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
       </nav>
       <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Rechercher"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://unique-gsy.github.com"></form>
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://unique-gsy.github.com"></form>
       </div>
     </div>
   </div>
@@ -72,6 +72,107 @@
 
       <div class="outer">
         <section id="main">
+  
+    <article id="post-sort" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/29/sort/" class="article-date">
+  <time class="dt-published" datetime="2021-01-29T11:11:09.000Z" itemprop="datePublished">2021-01-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/29/sort/">sort</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>本质是保证前i个元素有序<br><img src="https://www.runoob.com/wp-content/uploads/2019/03/insertionSort.gif" alt="插入排序"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertion_sort</span><span class="params">(<span class="keyword">int</span> arry[], <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> key = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; ++i) &#123;</span><br><span class="line">    key = arry[i];</span><br><span class="line">    <span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; j &gt;= <span class="number">0</span> &amp;&amp; arry[j] &gt; key; --j) &#123;</span><br><span class="line">      arry[j+<span class="number">1</span>] = arry[j];</span><br><span class="line">    &#125;</span><br><span class="line">    arry[j+<span class="number">1</span>] = key;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以简单看出，插入排序的时间复杂度为O(n²)</p>
+<h2 id="希尔排序-（缩小增量排序）"><a href="#希尔排序-（缩小增量排序）" class="headerlink" title="希尔排序 （缩小增量排序）"></a>希尔排序 （缩小增量排序）</h2><p>本质是对不同增量的序列组进行排序。<br>希尔排序存在多个个增量序列，排序时使用其中一个增量序列，所以存在某种增量序列为最优情况。<br>一种常用排序，但不一定是最好的增量序列是(N,N/2….)</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/6095354-ff984d80dbc0455f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/670/format/webp" alt="希尔排序"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">shell_sort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> gap, i, j;</span><br><span class="line">  <span class="keyword">int</span> temp;</span><br><span class="line">  <span class="keyword">for</span> (gap = len &gt;&gt; <span class="number">1</span>; gap &gt; <span class="number">0</span>; gap &gt;&gt;= <span class="number">1</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (i = gap; i &lt; len; i++) &#123;</span><br><span class="line">      temp = arr[i];</span><br><span class="line">      <span class="keyword">for</span> (j = i - gap; j &gt;= <span class="number">0</span> &amp;&amp; arr[j] &gt; temp; j -= gap)</span><br><span class="line">        arr[j + gap] = arr[j];</span><br><span class="line">        arr[j + gap] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>希尔排序严重依赖增量序列的选择，最坏情况可能是O(n²)</p>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p>可以得到目前最佳的O(NlogN)的时间复杂度，但在实践中慢于使用Sedgewick增量序列的希尔排序<br>本质是</p>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>归并排序是分治算法的一个典型应用。<br>本质是对问题拆解后，再排序合并。<br><img src="https://images2015.cnblogs.com/blog/1024555/201612/1024555-20161218163120151-452283750.png" alt="归并图解"><br><img src="https://www.runoob.com/wp-content/uploads/2019/03/mergeSort.gif" alt="归并动图"></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">define MIN(x,y) x &lt; y ? x : y </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">merge_sort</span><span class="params">(<span class="keyword">int</span> arr[], <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> *a = arr;</span><br><span class="line">  <span class="keyword">int</span> *b = (<span class="keyword">int</span> *) <span class="built_in">malloc</span>(len * <span class="keyword">sizeof</span>(<span class="keyword">int</span>));</span><br><span class="line">  <span class="keyword">int</span> seg, start;</span><br><span class="line">  <span class="keyword">for</span> (seg = <span class="number">1</span>; seg &lt; len; seg += seg) &#123;</span><br><span class="line">    <span class="keyword">for</span> (start = <span class="number">0</span>; start &lt; len; start += seg * <span class="number">2</span>) &#123;</span><br><span class="line">      <span class="keyword">int</span> low = start, mid = min(start + seg, len), high = min(start + seg * <span class="number">2</span>, len);</span><br><span class="line">      <span class="keyword">int</span> k = low;</span><br><span class="line">      <span class="keyword">int</span> start1 = low, end1 = mid;</span><br><span class="line">      <span class="keyword">int</span> start2 = mid, end2 = high;</span><br><span class="line">      <span class="keyword">while</span> (start1 &lt; end1 &amp;&amp; start2 &lt; end2)</span><br><span class="line">        b[k++] = a[start1] &lt; a[start2] ? a[start1++] : a[start2++];</span><br><span class="line">      <span class="keyword">while</span> (start1 &lt; end1)</span><br><span class="line">        b[k++] = a[start1++];</span><br><span class="line">      <span class="keyword">while</span> (start2 &lt; end2)</span><br><span class="line">        b[k++] = a[start2++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> *temp = a;</span><br><span class="line">    a = b;</span><br><span class="line">    b = temp;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (a != arr) &#123;</span><br><span class="line">    <span class="keyword">int</span> i;</span><br><span class="line">    <span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; len; i++)</span><br><span class="line">      b[i] = a[i];</span><br><span class="line">    b = a;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">free</span>(b);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://unique-gsy.github.com/2021/01/29/sort/" data-id="ckkje1tgc0001yoak9cl27nvk" data-title="sort" class="article-share-link">Teilen</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
+  
+    <article id="post-QueueAndStack" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2021/01/20/QueueAndStack/" class="article-date">
+  <time class="dt-published" datetime="2021-01-20T02:33:42.000Z" itemprop="datePublished">2021-01-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="p-name article-title" href="/2021/01/20/QueueAndStack/">堆和队列</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h1 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h1><p>堆通常是可以看作一个完全二叉树<br>它必须满足以下两个性质：        </p>
+<ul>
+<li><p>堆中的某个节点不可大于或小于其父节点的值      </p>
+</li>
+<li><p>堆总是一棵完全二叉树</p>
+<p><img src="./QueueAndStack/%E5%A0%86.png" alt="堆"></p>
+<p>可以看出堆中任意一个节点i，他的左子节点位于(2i)位置上，右子节点位于(2i+1)位置上，<br>其父节点位于(i÷2)位置上</p>
+</li>
+</ul>
+<p>也可以使用数组数组储存二叉堆</p>
+<p><img src="./QueueAndStack/%E6%95%B0%E7%BB%84%E5%82%A8%E5%AD%98%E4%BA%8C%E5%8F%89%E5%A0%86.png" alt="数组储存二叉堆"></p>
+<h2 id="堆的基本操作"><a href="#堆的基本操作" class="headerlink" title="堆的基本操作"></a>堆的基本操作</h2><h3 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h3><ul>
+<li>在堆的最后空闲位置插入元素        </li>
+<li>如果不破坏堆的性质，那么插入完成。<br>否则采取“上滤”策略，移动到正确位置。<br>（“上滤”：先在堆的尾部插入，然后向上移动到正确位置，每次移动使双方交换位置）</li>
+</ul>
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://unique-gsy.github.com/2021/01/20/QueueAndStack/" data-id="ckkje1tg60000yoaka0pd9rue" data-title="堆和队列" class="article-share-link">Teilen</a>
+      
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+
   
     <article id="post-hash-table" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
@@ -112,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://unique-gsy.github.com/2021/01/18/hash-table/" data-id="ckk2pv66500006gak1ecsenug" data-title="hash_table" class="article-share-link">Partager</a>
+      <a data-url="http://unique-gsy.github.com/2021/01/18/hash-table/" data-id="ckk2pv66500006gak1ecsenug" data-title="hash_table" class="article-share-link">Teilen</a>
       
       
       
@@ -212,7 +313,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://unique-gsy.github.com/2021/01/15/tree/" data-id="ckjzstq5d0001i8ak88390lpo" data-title="树" class="article-share-link">Partager</a>
+      <a data-url="http://unique-gsy.github.com/2021/01/15/tree/" data-id="ckjzstq5d0001i8ak88390lpo" data-title="树" class="article-share-link">Teilen</a>
       
       
       
@@ -252,7 +353,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://unique-gsy.github.com/2021/01/07/hello-myBlog/" data-id="ckjzstq560000i8akefcxa00f" data-title="hello_myBlog" class="article-share-link">Partager</a>
+      <a data-url="http://unique-gsy.github.com/2021/01/07/hello-myBlog/" data-id="ckjzstq560000i8akefcxa00f" data-title="hello_myBlog" class="article-share-link">Teilen</a>
       
       
       
@@ -275,7 +376,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Mot-clés</h3>
+    <h3 class="widget-title">Tags</h3>
     <div class="widget">
       <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91%E3%80%81AVL%E6%A0%91%E3%80%81%E4%BC%B8%E5%B1%95%E6%A0%91/" rel="tag">二叉树、AVL树、伸展树</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%A3%E5%88%97%E8%A1%A8/" rel="tag">散列表</a></li></ul>
     </div>
@@ -285,7 +386,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Nuage de mot-clés</h3>
+    <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
       <a href="/tags/%E4%BA%8C%E5%8F%89%E6%A0%91%E3%80%81AVL%E6%A0%91%E3%80%81%E4%BC%B8%E5%B1%95%E6%A0%91/" style="font-size: 10px;">二叉树、AVL树、伸展树</a> <a href="/tags/%E6%95%A3%E5%88%97%E8%A1%A8/" style="font-size: 10px;">散列表</a>
     </div>
@@ -294,7 +395,7 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
+    <h3 class="widget-title">Archiv</h3>
     <div class="widget">
       <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/01/">January 2021</a></li></ul>
     </div>
@@ -304,9 +405,17 @@
   
     
   <div class="widget-wrap">
-    <h3 class="widget-title">Articles récents</h3>
+    <h3 class="widget-title">letzter Beitrag</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2021/01/29/sort/">sort</a>
+          </li>
+        
+          <li>
+            <a href="/2021/01/20/QueueAndStack/">堆和队列</a>
+          </li>
         
           <li>
             <a href="/2021/01/18/hash-table/">hash_table</a>
@@ -334,7 +443,7 @@
     <div id="footer-info" class="inner">
       
       &copy; 2021 GSY<br>
-      Propulsé par <a href="https://hexo.io/" target="_blank">Hexo</a>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
 </footer>

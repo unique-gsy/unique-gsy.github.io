@@ -4,19 +4,22 @@
   <meta charset="utf-8">
   
   
-  <title>hello_myBlog | UNIQUE-GSY</title>
+  <title>堆和队列 | UNIQUE-GSY</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="世之奇伟、瑰怪、非常之观，常在险远">
+  <meta name="description" content="堆堆通常是可以看作一个完全二叉树它必须满足以下两个性质：          堆中的某个节点不可大于或小于其父节点的值        堆总是一棵完全二叉树  可以看出堆中任意一个节点i，他的左子节点位于(2i)位置上，右子节点位于(2i+1)位置上，其父节点位于(i÷2)位置上   也可以使用数组数组储存二叉堆  堆的基本操作insert 在堆的最后空闲位置插入元素         如果不破坏堆的性">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hello_myBlog">
-<meta property="og:url" content="http://unique-gsy.github.com/2021/01/07/hello-myBlog/index.html">
+<meta property="og:title" content="堆和队列">
+<meta property="og:url" content="http://unique-gsy.github.com/2021/01/20/QueueAndStack/index.html">
 <meta property="og:site_name" content="UNIQUE-GSY">
-<meta property="og:description" content="世之奇伟、瑰怪、非常之观，常在险远">
+<meta property="og:description" content="堆堆通常是可以看作一个完全二叉树它必须满足以下两个性质：          堆中的某个节点不可大于或小于其父节点的值        堆总是一棵完全二叉树  可以看出堆中任意一个节点i，他的左子节点位于(2i)位置上，右子节点位于(2i+1)位置上，其父节点位于(i÷2)位置上   也可以使用数组数组储存二叉堆  堆的基本操作insert 在堆的最后空闲位置插入元素         如果不破坏堆的性">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-01-07T15:09:30.000Z">
-<meta property="article:modified_time" content="2021-01-07T15:09:30.810Z">
+<meta property="og:image" content="http://unique-gsy.github.com/2021/01/20/QueueAndStack/QueueAndStack/%E5%A0%86.png">
+<meta property="og:image" content="http://unique-gsy.github.com/2021/01/20/QueueAndStack/QueueAndStack/%E6%95%B0%E7%BB%84%E5%82%A8%E5%AD%98%E4%BA%8C%E5%8F%89%E5%A0%86.png">
+<meta property="article:published_time" content="2021-01-20T02:33:42.000Z">
+<meta property="article:modified_time" content="2021-01-29T11:32:04.042Z">
 <meta property="article:author" content="GSY">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://unique-gsy.github.com/2021/01/20/QueueAndStack/QueueAndStack/%E5%A0%86.png">
   
     <link rel="alternate" href="/atom.xml" title="UNIQUE-GSY" type="application/atom+xml">
   
@@ -73,10 +76,10 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-hello-myBlog" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+        <section id="main"><article id="post-QueueAndStack" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
   <div class="article-meta">
-    <a href="/2021/01/07/hello-myBlog/" class="article-date">
-  <time class="dt-published" datetime="2021-01-07T15:09:30.000Z" itemprop="datePublished">2021-01-07</time>
+    <a href="/2021/01/20/QueueAndStack/" class="article-date">
+  <time class="dt-published" datetime="2021-01-20T02:33:42.000Z" itemprop="datePublished">2021-01-20</time>
 </a>
     
   </div>
@@ -87,7 +90,7 @@
         
   
     <h1 class="p-name article-title" itemprop="headline name">
-      hello_myBlog
+      堆和队列
     </h1>
   
 
@@ -95,11 +98,26 @@
     
     <div class="e-content article-entry" itemprop="articleBody">
       
-        
+        <h1 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h1><p>堆通常是可以看作一个完全二叉树<br>它必须满足以下两个性质：        </p>
+<ul>
+<li><p>堆中的某个节点不可大于或小于其父节点的值      </p>
+</li>
+<li><p>堆总是一棵完全二叉树</p>
+<p><img src="./QueueAndStack/%E5%A0%86.png" alt="堆"></p>
+<p>可以看出堆中任意一个节点i，他的左子节点位于(2i)位置上，右子节点位于(2i+1)位置上，<br>其父节点位于(i÷2)位置上</p>
+</li>
+</ul>
+<p>也可以使用数组数组储存二叉堆</p>
+<p><img src="./QueueAndStack/%E6%95%B0%E7%BB%84%E5%82%A8%E5%AD%98%E4%BA%8C%E5%8F%89%E5%A0%86.png" alt="数组储存二叉堆"></p>
+<h2 id="堆的基本操作"><a href="#堆的基本操作" class="headerlink" title="堆的基本操作"></a>堆的基本操作</h2><h3 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h3><ul>
+<li>在堆的最后空闲位置插入元素        </li>
+<li>如果不破坏堆的性质，那么插入完成。<br>否则采取“上滤”策略，移动到正确位置。<br>（“上滤”：先在堆的尾部插入，然后向上移动到正确位置，每次移动使双方交换位置）</li>
+</ul>
+<h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://unique-gsy.github.com/2021/01/07/hello-myBlog/" data-id="ckjzstq560000i8akefcxa00f" data-title="hello_myBlog" class="article-share-link">Teilen</a>
+      <a data-url="http://unique-gsy.github.com/2021/01/20/QueueAndStack/" data-id="ckkje1tg60000yoaka0pd9rue" data-title="堆和队列" class="article-share-link">Teilen</a>
       
       
       
@@ -109,15 +127,20 @@
     
 <nav id="article-nav">
   
-    <a href="/2021/01/15/tree/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/01/29/sort/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Neuer</strong>
       <div class="article-nav-title">
         
-          树
+          sort
         
       </div>
     </a>
   
+  
+    <a href="/2021/01/18/hash-table/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">hash_table</div>
+    </a>
   
 </nav>
 
