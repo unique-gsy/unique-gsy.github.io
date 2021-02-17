@@ -21,19 +21,20 @@
 
 <script class="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"unique-gsy.github.com","root":"/","images":"/images","scheme":"Muse","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
+    var CONFIG = {"hostname":"unique-gsy.github.com","root":"/","images":"/images","scheme":"Mist","version":"8.2.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"}};
   </script>
-<meta name="description" content="散列表散列表的核心思想是“以空间换时间”，重点解决冲突问题。 一、散列函数key值通过散列函数得到的hash(key)值表示内存中的具体地址       二、哈希冲突希望的理想情况是key1≠key2，则hash(hey1)≠hash(key2)。但现实情况不可能没有冲突，所以哈希表的核心问题之一就是解决冲突。介绍两种解决hash冲突方法">
+<meta name="description" content="根据键（Key）直接访问在内存存储位置的数据结构">
 <meta property="og:type" content="article">
-<meta property="og:title" content="hash_table">
+<meta property="og:title" content="散列表">
 <meta property="og:url" content="http://unique-gsy.github.com/2021/01/18/hash-table/index.html">
 <meta property="og:site_name" content="UNIQUE-GSY">
-<meta property="og:description" content="散列表散列表的核心思想是“以空间换时间”，重点解决冲突问题。 一、散列函数key值通过散列函数得到的hash(key)值表示内存中的具体地址       二、哈希冲突希望的理想情况是key1≠key2，则hash(hey1)≠hash(key2)。但现实情况不可能没有冲突，所以哈希表的核心问题之一就是解决冲突。介绍两种解决hash冲突方法">
+<meta property="og:description" content="根据键（Key）直接访问在内存存储位置的数据结构">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-18T03:05:17.000Z">
-<meta property="article:modified_time" content="2021-02-17T11:30:30.411Z">
+<meta property="article:modified_time" content="2021-02-17T12:10:53.460Z">
 <meta property="article:author" content="GSY">
-<meta property="article:tag" content="散列表">
+<meta property="article:tag" content="算法">
+<meta property="article:tag" content="hash">
 <meta name="twitter:card" content="summary">
 
 
@@ -49,7 +50,7 @@
     lang   : 'zh-CN'
   };
 </script>
-<title>hash_table | UNIQUE-GSY</title>
+<title>散列表 | UNIQUE-GSY</title>
   
 
 
@@ -101,9 +102,6 @@
       <div class="header-inner"><div class="site-brand-container">
   <div class="site-nav-toggle">
     <div class="toggle" aria-label="切换导航栏" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
     </div>
   </div>
 
@@ -124,14 +122,6 @@
 
 
 
-<nav class="site-nav">
-  <ul class="main-menu menu">
-        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
-        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
-        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
-        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
-  </ul>
-</nav>
 
 
 
@@ -166,42 +156,29 @@
 
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="GSY"
-      src="/images/avatar.png">
   <p class="site-author-name" itemprop="name">GSY</p>
   <div class="site-description" itemprop="description">世之奇伟、瑰怪、非常之观，常在险远</div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-          <a href="/archives/">
-        
+          <a href="/archives">
           <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
-          
         <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-          
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">9</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
-  <div class="links-of-author site-overview-item animated">
-      <span class="links-of-author-item">
-        <a href="https://github.com/unique-gsy.github.io/" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;unique-gsy.github.io&#x2F;" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:285618794@qq.com" title="E-Mail → mailto:285618794@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
-      </span>
-  </div>
 
 
 
@@ -239,7 +216,7 @@
     <link itemprop="mainEntityOfPage" href="http://unique-gsy.github.com/2021/01/18/hash-table/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="image" content="/images/avatar.gif">
       <meta itemprop="name" content="GSY">
       <meta itemprop="description" content="世之奇伟、瑰怪、非常之观，常在险远">
     </span>
@@ -249,7 +226,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          hash_table
+          散列表
         </h1>
 
         <div class="post-meta-container">
@@ -267,7 +244,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-02-17 19:30:30" itemprop="dateModified" datetime="2021-02-17T19:30:30+08:00">2021-02-17</time>
+        <time title="修改时间：2021-02-17 20:10:53" itemprop="dateModified" datetime="2021-02-17T20:10:53+08:00">2021-02-17</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -298,6 +275,7 @@
     </span>
 </div>
 
+            <div class="post-description">根据键（Key）直接访问在内存存储位置的数据结构</div>
         </div>
       </header>
 
@@ -305,11 +283,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h1><p>散列表的核心思想是“以空间换时间”，重点解决冲突问题。</p>
+        <a id="more"></a>
+
+<h1 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h1><p>散列表的核心思想是“以空间换时间”，重点解决冲突问题。</p>
 <h2 id="一、散列函数"><a href="#一、散列函数" class="headerlink" title="一、散列函数"></a>一、散列函数</h2><p>key值通过散列函数得到的hash(key)值表示内存中的具体地址      </p>
 <h2 id="二、哈希冲突"><a href="#二、哈希冲突" class="headerlink" title="二、哈希冲突"></a>二、哈希冲突</h2><p>希望的理想情况是key1≠key2，则hash(hey1)≠hash(key2)。<br>但现实情况不可能没有冲突，所以哈希表的核心问题之一就是解决冲突。<br>介绍两种解决hash冲突方法</p>
-<a id="more"></a>
-
 <h3 id="1、开放寻址法"><a href="#1、开放寻址法" class="headerlink" title="1、开放寻址法"></a>1、开放寻址法</h3><p>开放寻址法中比较经典的有：线性探测法、平方探测法、双散列和再散列。      </p>
 <ol>
 <li><p> 线性探测法<br>核心思想是在发生冲突后从hash(key)位置往后查找，直到有空闲位置。<br>缺点是当插入元素足够大后，发生冲突的可能性越来越大，极端情况下的时间复杂度是O(N)</p>
@@ -328,25 +306,9 @@
     
 
     <footer class="post-footer">
-          <div class="followme">
-  <span>欢迎关注我的其它发布渠道</span>
-
-  <div class="social-list">
-
-      <div class="social-item">
-        <a target="_blank" class="social-link" href="/atom.xml">
-          <span class="icon">
-            <i class="fa fa-rss"></i>
-          </span>
-
-          <span class="label">RSS</span>
-        </a>
-      </div>
-  </div>
-</div>
-
           <div class="post-tags">
-              <a href="/tags/%E6%95%A3%E5%88%97%E8%A1%A8/" rel="tag"># 散列表</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+              <a href="/tags/hash/" rel="tag"># hash</a>
           </div>
 
         
@@ -423,11 +385,8 @@
     <span title="站点阅读时长">6 分钟</span>
   </span>
 </div>
-
-<!--
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/mist/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
--->
 
     </div>
   </footer>

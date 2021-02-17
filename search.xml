@@ -3,15 +3,21 @@
   <entry>
     <title>OS</title>
     <url>/2021/02/17/OS/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<a id="more"></a>]]></content>
       <categories>
         <category>操作系统</category>
       </categories>
+      <tags>
+        <tag>OS</tag>
+        <tag>面试</tag>
+      </tags>
   </entry>
   <entry>
     <title>堆和队列</title>
     <url>/2021/01/20/QueueAndStack/</url>
-    <content><![CDATA[<h1 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h1><p>堆通常是可以看作一个完全二叉树<br>它必须满足以下两个性质：        </p>
+    <content><![CDATA[<a id="more"></a>
+
+<h1 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h1><p>堆通常是可以看作一个完全二叉树<br>它必须满足以下两个性质：        </p>
 <ul>
 <li><p>堆中的某个节点不可大于或小于其父节点的值      </p>
 </li>
@@ -26,21 +32,19 @@
 <li>在堆的最后空闲位置插入元素        </li>
 <li>如果不破坏堆的性质，那么插入完成。<br>否则采取“上滤”策略，移动到正确位置。<br>（“上滤”：先在堆的尾部插入，然后向上移动到正确位置，每次移动使双方交换位置）</li>
 </ul>
-<a id="more"></a>
-
 <h1 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h1><h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
       <categories>
         <category>算法</category>
       </categories>
   </entry>
   <entry>
-    <title>hash_table</title>
+    <title>散列表</title>
     <url>/2021/01/18/hash-table/</url>
-    <content><![CDATA[<h1 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h1><p>散列表的核心思想是“以空间换时间”，重点解决冲突问题。</p>
+    <content><![CDATA[<a id="more"></a>
+
+<h1 id="散列表"><a href="#散列表" class="headerlink" title="散列表"></a>散列表</h1><p>散列表的核心思想是“以空间换时间”，重点解决冲突问题。</p>
 <h2 id="一、散列函数"><a href="#一、散列函数" class="headerlink" title="一、散列函数"></a>一、散列函数</h2><p>key值通过散列函数得到的hash(key)值表示内存中的具体地址      </p>
 <h2 id="二、哈希冲突"><a href="#二、哈希冲突" class="headerlink" title="二、哈希冲突"></a>二、哈希冲突</h2><p>希望的理想情况是key1≠key2，则hash(hey1)≠hash(key2)。<br>但现实情况不可能没有冲突，所以哈希表的核心问题之一就是解决冲突。<br>介绍两种解决hash冲突方法</p>
-<a id="more"></a>
-
 <h3 id="1、开放寻址法"><a href="#1、开放寻址法" class="headerlink" title="1、开放寻址法"></a>1、开放寻址法</h3><p>开放寻址法中比较经典的有：线性探测法、平方探测法、双散列和再散列。      </p>
 <ol>
 <li><p> 线性探测法<br>核心思想是在发生冲突后从hash(key)位置往后查找，直到有空闲位置。<br>缺点是当插入元素足够大后，发生冲突的可能性越来越大，极端情况下的时间复杂度是O(N)</p>
@@ -56,20 +60,21 @@
         <category>算法</category>
       </categories>
       <tags>
-        <tag>散列表</tag>
+        <tag>算法</tag>
+        <tag>hash</tag>
       </tags>
   </entry>
   <entry>
-    <title>hello_myBlog</title>
+    <title>hello_MyBlog</title>
     <url>/2021/01/07/hello-myBlog/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<a id="more"></a>]]></content>
   </entry>
   <entry>
     <title>sort</title>
     <url>/2021/01/29/sort/</url>
-    <content><![CDATA[<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h3 id="（重点还需要补充时间复杂度的分析）"><a href="#（重点还需要补充时间复杂度的分析）" class="headerlink" title="（重点还需要补充时间复杂度的分析）"></a>（重点还需要补充时间复杂度的分析）</h3><a id="more"></a>
+    <content><![CDATA[<a id="more"></a>
 
-<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>本质是保证前i个元素有序<br><img src="https://www.runoob.com/wp-content/uploads/2019/03/insertionSort.gif" alt="插入排序"></p>
+<h1 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h1><h3 id="（重点还需要补充时间复杂度的分析）"><a href="#（重点还需要补充时间复杂度的分析）" class="headerlink" title="（重点还需要补充时间复杂度的分析）"></a>（重点还需要补充时间复杂度的分析）</h3><h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p>本质是保证前i个元素有序<br><img src="https://www.runoob.com/wp-content/uploads/2019/03/insertionSort.gif" alt="插入排序"></p>
 <figure class="highlight c"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insertion_sort</span><span class="params">(<span class="keyword">int</span> arry[], <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> key = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; ++i) &#123;</span><br><span class="line">    key = arry[i];</span><br><span class="line">    <span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (; j &gt;= <span class="number">0</span> &amp;&amp; arry[j] &gt; key; --j) &#123;</span><br><span class="line">      arry[j+<span class="number">1</span>] = arry[j];</span><br><span class="line">    &#125;</span><br><span class="line">    arry[j+<span class="number">1</span>] = key;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>可以简单看出，插入排序的时间复杂度为O(n²)</p>
 <h2 id="希尔排序-（缩小增量排序）"><a href="#希尔排序-（缩小增量排序）" class="headerlink" title="希尔排序 （缩小增量排序）"></a>希尔排序 （缩小增量排序）</h2><p>本质是对不同增量的序列组进行排序。<br>希尔排序存在多个个增量序列，排序时使用其中一个增量序列，所以存在某种增量序列为最优情况。<br>一种常用排序，但不一定是最好的增量序列是(N,N/2….)</p>
@@ -89,13 +94,19 @@
       <categories>
         <category>算法</category>
       </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>快排</tag>
+        <tag>希尔排序</tag>
+        <tag>归并排序</tag>
+      </tags>
   </entry>
   <entry>
     <title>树</title>
     <url>/2021/01/15/tree/</url>
-    <content><![CDATA[<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><p>树的一些特殊结构可以保证大部分操作在O（logN）完成，保证了最坏情况的时间界</p>
-<hr>
-<ul>
+    <content><![CDATA[<a id="more"></a>
+
+<h1 id="树"><a href="#树" class="headerlink" title="树"></a>树</h1><ul>
 <li><h2 id="树的遍历（以二叉树为样例）"><a href="#树的遍历（以二叉树为样例）" class="headerlink" title="树的遍历（以二叉树为样例）"></a><strong>树的遍历（以二叉树为样例）</strong></h2></li>
 </ul>
 <table>
@@ -119,8 +130,6 @@
 </tr>
 </tbody></table>
 <h3 id="1、后缀表达式转化为表达式树"><a href="#1、后缀表达式转化为表达式树" class="headerlink" title="1、后缀表达式转化为表达式树"></a>1、后缀表达式转化为表达式树</h3><p>通过入栈出栈生成表达式树。<br> 具体步骤是：<br> 1、如果该元素是数字，压入栈<br> 2、如果该元素是运算符，弹出两个元素，第一个为右子树，第二个为左子树，生成新树压入栈<br> 3、如果栈中只剩一个元素时，即为表达树  </p>
-<a id="more"></a>
-
 <p>例如：后缀表达式为1 2 3 + 4 * + 5 -<br>扫描123<br><img src="./tree/1.png" width="50%" height="50%"><br>扫描+<br><img src="./tree/2.png" width="50%" height="50%"><br>扫描4和*<br><img src="./tree/3.png" width="50%" height="50%"><br>扫描+和5<br><img src="./tree/4.png" width="50%" height="50%"><br>扫描-<br><img src="./tree/5.png" width="50%" height="50%">       </p>
 <ul>
 <li><h2 id="二叉查找树（BST）"><a href="#二叉查找树（BST）" class="headerlink" title="二叉查找树（BST）"></a><strong>二叉查找树（BST）</strong></h2></li>
@@ -157,13 +166,15 @@
 <p>重点掌握红黑树填删后的颜色选择和自平衡过程（后续补充）</p>
 ]]></content>
       <tags>
-        <tag>二叉树、AVL树、伸展树</tag>
+        <tag>树</tag>
+        <tag>算法</tag>
+        <tag>学习</tag>
       </tags>
   </entry>
   <entry>
     <title>动态规划</title>
     <url>/2021/02/03/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<a id="more"></a>]]></content>
       <categories>
         <category>算法</category>
       </categories>
@@ -171,7 +182,10 @@
   <entry>
     <title>图论</title>
     <url>/2021/01/30/%E5%9B%BE%E8%AE%BA/</url>
-    <content><![CDATA[<h1 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h1><p>图可以分为（有向图，无向图），（有权图，无权图），（连通图，非连通图）。<br>图顶点度的概念：</p>
+    <content><![CDATA[<a id="more"></a>
+
+
+<h1 id="图论"><a href="#图论" class="headerlink" title="图论"></a>图论</h1><p>图可以分为（有向图，无向图），（有权图，无权图），（连通图，非连通图）。<br>图顶点度的概念：</p>
 <ul>
 <li>度：与该点连接的所有节点总和    </li>
 <li>入度：存在于有向图中，所有接入该点的边数总和。</li>
@@ -182,8 +196,6 @@
 <li>邻接矩阵：即二维数组，相通即为1（或者是对应权值）。不通则为0。<br>  代价是空间消耗过大，若图是稠密的，邻接矩阵则较为合适。</li>
 <li>邻接链表：使用一个表存放所有相邻顶点。</li>
 </ul>
-<a id="more"></a>
-
 <p><img src="https://pic1.zhimg.com/80/v2-97b58740d45f3041736d45faacbbfb94_720w.png" alt="表示方法"></p>
 <h2 id="一、拓扑排序"><a href="#一、拓扑排序" class="headerlink" title="一、拓扑排序"></a>一、拓扑排序</h2><p>拓扑排序是对有向无环图的顶点的一种排序，它使得如果存在一条Vi到Vj的路径，那么排序中Vj出现在Vi的后面。<br>一种常用方法是：</p>
 <ul>
@@ -227,7 +239,7 @@
   <entry>
     <title>贪心算法</title>
     <url>/2021/02/03/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<a id="more"></a>]]></content>
       <categories>
         <category>算法</category>
       </categories>
